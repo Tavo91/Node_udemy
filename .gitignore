@@ -216,3 +216,5 @@ $RECICLAJE.BIN/
 *.lnk
 
 # Fin de https://www.toptal.com/developers/gitignore/api/node,windows,macos,linux
+
+postgres_data

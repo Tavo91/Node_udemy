@@ -1,30 +1,18 @@
-const faker = require("faker");
-const boom = require("@hapi/boom");
+const sequelize = require('../libs/sequelize')
 
 
 
-const getAllProductos = (req, res)=>{
-    
+const getAllProductos = async (req, res)=>{
     try {
-        
-        const productos = []
-        const {size} = req.query
-        const limit = size ||5
-        for(let index = 0; index<limit; index++){
-            productos.push({
-                nombre: faker.commerce.productName(),
-                precio: parseInt(faker.commerce.price(), 10),
-                imagen: faker.image.imageUrl(),
-            })
-            
-        }
-        return productos
-    } catch(err) {
-        console.log(err)
-
+        const query = 'SELECT * FROM tasks'
+        const [data] = await sequelize.query(query)
+        return  {data}
+    } catch (error) {
+        console.log(error)
     }
-    
+
 }
+
 
 
 const crearNuevoProducto = (req, res)=>{
